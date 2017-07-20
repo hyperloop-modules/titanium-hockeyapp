@@ -7,11 +7,16 @@ Hyperloop-based version of HockeyApp for both Android and iOS
 - [x] Hyperloop 1.2.8+
 - [x] Xcode 8+
 - [x] HockeyApp App ID.  One each per platform.  (referenced below as "APP_IDENTIFIER_KEY")
-- [x] For Android, include the following in /tiapp.xml (replacing "APP_IDENTIFIER_KEY" with your HockeyApp App ID):
+- [x] For Android:
+1. Include the following in /tiapp.xml (replacing "APP_IDENTIFIER_KEY" with your HockeyApp App ID):
 ```xml
 <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="APP_IDENTIFIER_KEY"/>
 ```
-- [x] For iOS, include the following in /Podfile (replacing "APP_NAME" with your Titanium App Name):
+2. Download HockeyApp.aar file from HockeyApp and copy into /app/platform/android/
+(Latest at the time of this article - https://github.com/bitstadium/HockeySDK-Cordova/tree/master/src/android/HockeySDK-Android )
+
+- [x] For iOS:
+include the following in /Podfile (replacing "APP_NAME" with your Titanium App Name):
 ```javascript
 install! 'cocoapods',
          :integrate_targets => false
@@ -21,6 +26,7 @@ target 'APP_NAME' do
     pod 'HockeySDK', :subspecs => ['AllFeaturesLib']
 end
 ```
+(Hyperloop/CocoaPods will automatically retrieve the HockeyApp SDK)
 
 ### Usage
 Copy /lib/ti.hockeyapp.js to your /lib folder
